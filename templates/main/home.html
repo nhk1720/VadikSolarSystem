@@ -1,0 +1,195 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Home - Vadik Solar System{% endblock %}
+
+{% block content %}
+<!-- 🔹 Top Scrolling Text Bar -->
+<div class="scrolling-text">
+    <p>Welcome to <strong>Vadik Solar System</strong> – We provide solar inverter services and sales.</p>
+</div>
+
+<!-- 🔹 Image Slider -->
+<div class="slider-container">
+    <div class="slider">
+        <div class="slide active">
+            <img src="{% static 'images/Gootu_img.png' %}" alt="Slide 1">
+        </div>
+        <div class="slide">
+            <img src="{% static 'images/slide_img2.png' %}" alt="Slide 2">
+        </div>
+    </div>
+
+    <!-- Navigation Dots -->
+    <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+    </div>
+</div>
+
+<!-- 🔹 About Us Section -->
+<section id="about" class="about-section">
+    <div class="about-container">
+        <h2>About Us</h2>
+        <p>
+            <strong>Vadik Solar System</strong> is a trusted provider of high-quality solar inverters, offering both sales and professional inverter services. 
+            We specialize in delivering reliable, energy-efficient solutions for homes and businesses, ensuring optimal performance and long-term savings.
+        </p>
+        <p>
+            Our commitment to customer satisfaction, combined with our technical expertise, makes us a preferred choice for solar power solutions. 
+            We provide end-to-end services — from consultation and installation to maintenance and support.
+        </p>
+        <p class="auth-text">
+            <strong>Vadik Solar System (Haridwar):</strong> We are proud to be an 
+            <span class="highlight">authorized distributor</span> for 
+            <a href="https://www.gootuenergy.com/" target="_blank">GOOTU Energy</a>, 
+            a globally recognized leader in solar energy technology.
+        </p>
+    </div>
+</section>
+
+<style>
+/* 🔹 Scrolling Text Bar */
+.scrolling-text {
+    background-color: #e0e0e0;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.scrolling-text p {
+    margin: 0;
+    display: inline-block;
+    padding-left: 100%;
+    animation: scrollText 12s linear infinite;
+}
+@keyframes scrollText {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* 🔹 Slider */
+.slider-container {
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.slide {
+    min-width: 100%;
+    transition: opacity 0.5s ease;
+}
+.slide img {
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+.dots {
+    text-align: center;
+    margin-top: 10px;
+}
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+.dot.active {
+    background-color: #72b23d;
+}
+
+/* 🔹 About Section */
+.about-section {
+    padding: 40px 20px;
+    background: #f9f9f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.about-container {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+.about-container h2 {
+    color: #72b23d;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+.about-container p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+.about-container a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+.highlight {
+    color: #25D366;
+}
+.auth-text {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* 🔹 Responsive */
+@media (max-width: 768px) {
+    .slider-container {
+        border-radius: 5px;
+    }
+    .about-container h2 {
+        font-size: 1.6rem;
+    }
+    .about-container p {
+        font-size: 1rem;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.style.display = (i === index) ? 'block' : 'none';
+            dots[i].classList.toggle('active', i === index);
+        });
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+    }
+
+    setInterval(nextSlide, 3000);
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentIndex = index;
+            showSlide(currentIndex);
+        });
+    });
+
+    showSlide(currentIndex);
+});
+</script>
+{% endblock %}

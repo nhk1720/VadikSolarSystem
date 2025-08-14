@@ -1,0 +1,10 @@
+/* Remove default body spacing */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Optional: ensure full-width header/footer */
+header, footer {
+    width: 100%;
+}
