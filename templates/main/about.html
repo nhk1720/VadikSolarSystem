@@ -4,8 +4,14 @@
 {% block title %}About Us - Vadik Solar System{% endblock %}
 
 {% block content %}
-<section id="about" style="padding: 40px 20px; background: #f9f9f9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-    <div style="max-width: 900px; margin: auto; text-align: center;">
+<section id="about-us" style="padding: 40px 0; background-color: #f9f9f9;">
+    <div style="display: flex; align-items: center; max-width: 1100px; margin: auto; gap: 30px; flex-wrap: wrap;">
+          <!-- Left: Image -->
+        <div style="flex: 1; min-width: 300px;">
+            <img src="{% static 'images/aboutus_img.png' %}" alt="About Vadik Solar System" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+        <!-- Right: Text -->
+        <div style="flex: 1; min-width: 300px;">
         <h2 style="color: #72b23d; font-size: 2rem; margin-bottom: 15px;">
             About Us
         </h2>
@@ -23,6 +29,7 @@
             <a href="https://www.gootuenergy.com/" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">GOOTU Energy</a>, 
             a globally recognized leader in solar energy technology.
         </p>
+        </div>
     </div>
 </section>
 {% endblock %}

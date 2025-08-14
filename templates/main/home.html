@@ -28,23 +28,32 @@
 </div>
 
 <!-- 🔹 About Us Section -->
-<section id="about" class="about-section">
-    <div class="about-container">
-        <h2>About Us</h2>
-        <p>
+<section id="about-us" style="padding: 40px 0; background-color: #f9f9f9;">
+    <div style="display: flex; align-items: center; max-width: 1100px; margin: auto; gap: 30px; flex-wrap: wrap;">
+          <!-- Left: Image -->
+        <div style="flex: 1; min-width: 300px;">
+            <img src="{% static 'images/aboutus_img.png' %}" alt="About Vadik Solar System" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+        <!-- Right: Text -->
+        <div style="flex: 1; min-width: 300px;">
+        <h2 style="color: #72b23d; font-size: 2rem; margin-bottom: 15px;">
+            About Us
+        </h2>
+        <p style="color: #555; font-size: 1.1rem; line-height: 1.6;">
             <strong>Vadik Solar System</strong> is a trusted provider of high-quality solar inverters, offering both sales and professional inverter services. 
-            We specialize in delivering reliable, energy-efficient solutions for homes and businesses, ensuring optimal performance and long-term savings.
+            We specialize in delivering reliable, energy-efficient solutions to meet the needs of homes and businesses, ensuring 
+            optimal performance and long-term savings.
         </p>
-        <p>
-            Our commitment to customer satisfaction, combined with our technical expertise, makes us a preferred choice for solar power solutions. 
-            We provide end-to-end services — from consultation and installation to maintenance and support.
+        <p style="color: #555; font-size: 1.1rem; line-height: 1.6;">
+            Our commitment to customer satisfaction, combined with our technical expertise, makes us a preferred choice for 
+            solar power solutions. We provide end-to-end services — from consultation and installation to maintenance and support.
         </p>
-        <p class="auth-text">
-            <strong>Vadik Solar System (Haridwar):</strong> We are proud to be an 
-            <span class="highlight">authorized distributor</span> for 
-            <a href="https://www.gootuenergy.com/" target="_blank">GOOTU Energy</a>, 
+        <p style="margin-top: 20px; font-size: 1rem; color: #333;">
+            <strong>Vadik Solar System (Haridwar):</strong> We are proud to be an <span style="color: #25D366;">authorized distributor</span> for 
+            <a href="https://www.gootuenergy.com/" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">GOOTU Energy</a>, 
             a globally recognized leader in solar energy technology.
         </p>
+        </div>
     </div>
 </section>
 
@@ -192,4 +201,6 @@ document.addEventListener('DOMContentLoaded', function () {
     showSlide(currentIndex);
 });
 </script>
+
+
 {% endblock %}

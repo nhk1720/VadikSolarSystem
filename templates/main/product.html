@@ -1,0 +1,169 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Our Products - Vadik Solar System{% endblock %}
+
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .products-section {
+        text-align: center;
+        padding: 20px;
+        background: #f7f7f7;
+    }
+
+    .products-section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(to right, #4CAF50, #2e7d32);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+    .product-buttons {
+        margin-bottom: 30px;
+    }
+
+    .product-btn {
+        padding: 12px 20px;
+        margin: 0 8px;
+        border: none;
+        background: #fff;
+        color: #4CAF50;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        border-radius: 25px;
+        border: 2px solid #4CAF50;
+        transition: all 0.3s ease;
+    }
+
+    .product-btn:hover {
+        background: #4CAF50;
+        color: white;
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-btn.active {
+        background: #4CAF50;
+        color: white;
+    }
+
+    .product-images {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+        margin-top: 10px;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .product-card {
+        text-align: center;
+        width: 220px;
+        background: white;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card img {
+        width: 100%;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .product-card img:hover {
+        transform: scale(1.05);
+    }
+
+    .product-desc {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    .product-desc:hover {
+        color: #4CAF50;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<section class="products-section">
+    <h2>Our Products</h2>
+
+    <!-- Buttons -->
+    <div class="product-buttons">
+        <button class="product-btn active" onclick="showProduct(1, event)">Hybrid Solar Inverter</button>
+        <button class="product-btn" onclick="showProduct(2, event)">Off Grid Solar Inverter</button>
+        <button class="product-btn" onclick="showProduct(3, event)">Wall Mounted Energy Storage Battery</button>
+        <button class="product-btn" onclick="showProduct(4, event)">All-in-one Energy Storage System</button>
+    </div>
+
+    <!-- Images -->
+    <div class="product-images" id="productImages"></div>
+</section>
+
+<script>
+    const products = {
+        1: [
+            { img: "{% static 'images/Hybrid_solar1/img1.png' %}", desc: "3.6kw 24V Hybrid Solar Inverter" },
+            { img: "{% static 'images/Hybrid_solar1/img2.png' %}", desc: "Pure Sine Wave 24V 5Kw Solar Inverter" },
+            { img: "{% static 'images/Hybrid_solar1/img3.png' %}", desc: "GOOTU 3.6KW Hybrid Dual Output Inverter" },
+            { img: "{% static 'images/Hybrid_solar1/img4.png' %}", desc: "Single Phase 6Kw 48V Hybrid Solar Inverter" },
+            { img: "{% static 'images/Hybrid_solar1/img3.png' %}", desc: "GOOTU 6KW 48V MPPT Parallelable Hybrid Solar Inverter" }
+        ],
+        2: [
+            { img: "{% static 'images/Off grid solor inverter/img1.png' %}", desc: "1.2Kva Off-Grid Solar Power Inverter" },
+            { img: "{% static 'images/Off grid solor inverter/img2.png' %}", desc: "12V 1200W Off Grid Solar Inverter" },
+            { img: "{% static 'images/Off grid solor inverter/img3.png' %}", desc: "48V 6VA Inverter With Built-IN Wifi" },
+            { img: "{% static 'images/Off grid solor inverter/img4.png' %}", desc: "GOOTU 12V1.6KW Off Grid Inverter" },
+            { img: "{% static 'images/Off grid solor inverter/img5.png' %}", desc: "24V 3200W Off Grid Solar Inverter" }
+        ],
+        3: [
+            { img: "images/aboutus_img.png", desc: "This is Product 3 - Item A" },
+            { img: "images/aboutus_img.png", desc: "This is Product 3 - Item B" },
+            { img: "images/aboutus_img.png", desc: "This is Product 3 - Item C" }
+        ],
+        4: [
+            { img: "images/aboutus_img.png", desc: "This is Product 4 - Item A" },
+            { img: "images/aboutus_img.png", desc: "This is Product 4 - Item B" },
+            { img: "images/aboutus_img.png", desc: "This is Product 4 - Item C" }
+        ]
+    };
+
+    function showProduct(productNumber, e) {
+        document.querySelectorAll(".product-btn").forEach(btn => btn.classList.remove("active"));
+        e.target.classList.add("active");
+
+        const imagesContainer = document.getElementById("productImages");
+        imagesContainer.innerHTML = products[productNumber]
+            .map(item => `
+                <div class="product-card">
+                    <img src="${item.img}" alt="Product Image">
+                    <div class="product-desc">${item.desc}</div>
+                </div>
+            `).join("");
+    }
+
+    showProduct(1, { target: document.querySelector(".product-btn") });
+</script>
+{% endblock %}

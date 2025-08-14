@@ -8,3 +8,6 @@ def about_view(request):
 
 def contact_view(request):
     return render(request, 'main/contact.html')
+
+def product_view(request):
+    return render(request, 'main/product.html')
