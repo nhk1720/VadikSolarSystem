@@ -2,155 +2,157 @@
 <header>
     <style>
         html, body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        /* Contact info styling */
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end; /* Align right; use center if you want centered */
-            gap: 6px;
-            font-size: 0.95rem;
-            color: #333;
-        }
+    /* Contact info styling */
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 6px;
+        font-size: 0.95rem;
+        color: #333;
+    }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
 
-        /* WhatsApp icon styling */
-        .contact-item i {
-            color: #25D366; /* WhatsApp green */
-            font-size: 1.2rem;
-        }
-        /* Email icon */
-        .contact-item i.fas.fa-envelope {
-            color: #007bff; /* Blue for email */
-            font-size: 1.2rem;
-        }
-        /* ---------------- Upper Header ---------------- */
+    .contact-item i {
+        font-size: 1.2rem;
+    }
+    .contact-item i.fab.fa-whatsapp {
+        color: #25D366;
+    }
+    .contact-item i.fas.fa-envelope {
+        color: #007bff;
+    }
+
+    /* ---------------- Top Header ---------------- */
+    .top-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 30px;
+        background: #f5f5f5;
+        flex-wrap: wrap;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .top-header .logo img {
+        height: 60px;
+        width: auto;
+    }
+
+    .top-header .center-text {
+        flex: 1;
+        text-align: center;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #72b23d;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 4px rgba(0, 102, 204, 0.8);
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    /* ---------------- Main Header ---------------- */
+    .main-header {
+        background: #72b23d;
+        padding: 12px 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    .main-header .brand-name {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 1px;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    nav {
+        display: flex;
+        gap: 25px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 6px 10px;
+        border-radius: 4px;
+        transition: all 0.3s;
+    }
+
+    nav a:hover {
+        background: rgba(255,255,255,0.2);
+        color: #e0ffd4;
+    }
+
+    /* Hamburger menu (hidden by default on desktop) */
+    .menu-toggle {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: #fff;
+    }
+
+    /* ---------------- Responsive ---------------- */
+    @media (max-width: 991px) {
         .top-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 30px;
-            background: #f5f5f5;
-            flex-wrap: wrap;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .top-header .logo img {
-            height: 70px;
-            width: auto;
-        }
-
-        /* Stylish GOOTU text */
-        .top-header .center-text {
-            flex: 1;
+            flex-direction: column;
             text-align: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #72b23d;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0, 102, 204, 0.8); /* Sedo blue shadow */
-            font-family: 'Montserrat', sans-serif;
+            gap: 10px;
         }
 
-        .top-header .center-text:hover {
-            color: #72b23d; /* darker green on hover */
-            text-shadow: 3px 3px 6px rgba(0, 102, 204, 1);
-            transform: scale(1.05);
-            transition: all 0.3s ease-in-out;
-        }
-
-        .top-header .contact-info {
-            font-size: 0.95rem;
-            text-align: right;
-            color: #333;
-        }
-
-        /* ---------------- Main Header / Navigation ---------------- */
-        .main-header {
-            background: #72b23d;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
+        .contact-info {
             align-items: center;
-            flex-wrap: wrap;
         }
 
-        /* Brand Name Styling */
-        .main-header .brand-name {
-            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 1px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-            transition: color 0.3s, text-shadow 0.3s;
-        }
-
-        .main-header .brand-name:hover {
-            color: #e0ffd4;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-        }
-
-        /* Navigation Links */
         nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
+            display: none; /* hidden by default on mobile */
+            flex-direction: column;
+            background: #5fa02f;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px 0;
         }
 
         nav a {
-            text-decoration: none;
-            color: #ffffff;
-            font-weight: 600;
+            padding: 12px;
             font-size: 1rem;
-            padding: 6px 10px;
-            border-radius: 4px;
-            transition: all 0.3s;
+            display: block;
         }
 
-        nav a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: #e0ffd4;
-            transform: scale(1.05);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        .menu-toggle {
+            display: block;
         }
 
-        /* ---------------- Mobile Responsive ---------------- */
-        @media (max-width: 991px) {
-            .top-header, .main-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
-
-            .top-header .contact-info {
-                text-align: center;
-            }
-
-            nav {
-                justify-content: center;
-            }
+        nav.active {
+            display: flex;
         }
+    }
 
-        @media (max-width: 480px) {
-            .main-header .brand-name {
-                font-size: 1.3rem;
-            }
-            nav a {
-                gap: 10px;
-                font-size: 0.9rem;
-            }
+    @media (max-width: 480px) {
+        .top-header .center-text {
+            font-size: 1.4rem;
         }
+        .main-header .brand-name {
+            font-size: 1.3rem;
+        }
+    }
+
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- 🔹 Upper Header -->
@@ -180,7 +182,7 @@
             <a href="/">Home</a>
             <a href="/about/">About Us</a>
             <a href="/product/">Products</a>
-            <a href="/Video/">Video</a>
+            <a href="/videos/">Video</a>
             <a href="/contact/">Contact</a>
             <a href="/more/">More About GOTU</a>
         </nav>

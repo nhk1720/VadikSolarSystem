@@ -11,3 +11,6 @@ def contact_view(request):
 
 def product_view(request):
     return render(request, 'main/product.html')
+
+def video_view(request):
+    return render(request, 'main/videos.html')

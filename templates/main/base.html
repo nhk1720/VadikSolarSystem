@@ -1,19 +1,80 @@
-
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Vadick Solar System{% endblock %}</title>
+    <title>{% block title %}Vadik Solar System{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* Reset margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden; /* prevent horizontal scroll */
+        }
+
+        /* Layout wrapper */
+        main {
+            width: 100%;
+            margin: 0;
+            padding: 0;  /* ❌ removed padding that was creating space */
+        }
+
+        /* Section general style */
+        section {
+            width: 100%;
+            margin: 0;
+            padding: 40px 20px; /* add only controlled padding inside sections */
+        }
+
+        /* Footer styling */
+        footer {
+            background: #72b23d;
+            color: #fff;
+            padding: 15px 10px;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive handling */
+        @media (max-width: 768px) {
+            section {
+                padding: 20px 15px;
+            }
+            footer {
+                font-size: 0.85rem;
+                padding: 12px 5px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            section {
+                padding: 60px 40px;
+            }
+            footer {
+                font-size: 1rem;
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     {% include 'includes/header.html' %}
 
-    {% block content %}
-    {% endblock %}
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
 
     {% include 'includes/footer.html' %}
 </body>

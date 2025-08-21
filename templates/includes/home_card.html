@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vadik Solar System - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Card Section Container */
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 25px;
+        padding: 50px 20px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    /* Card Styling */
+    .card {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 35px 25px;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .card i {
+        font-size: 45px;
+        color: #2e7d32; /* Dark Green */
+        margin-bottom: 18px;
+        transition: 0.3s;
+    }
+
+    .card h3 {
+        font-size: 22px;
+        margin-bottom: 12px;
+        color: #222;
+        transition: 0.3s;
+    }
+
+    .card p {
+        font-size: 15px;
+        color: #555;
+        opacity: 0;
+        max-height: 0;
+        transition: all 0.5s ease;
+        line-height: 1.6;
+    }
+
+    /* Hover Effect */
+    .card:hover {
+        background: linear-gradient(135deg, #388e3c, #72b23d);
+        color: #fff;
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .card:hover i,
+    .card:hover h3 {
+        color: #fff;
+    }
+
+    .card:hover p {
+        opacity: 1;
+        max-height: 300px;
+        margin-top: 12px;
+        color: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .cards-container {
+            padding: 30px 15px;
+            gap: 20px;
+        }
+        .card {
+            padding: 25px 15px;
+        }
+        .card h3 {
+            font-size: 20px;
+        }
+        .card p {
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .card {
+            padding: 20px 12px;
+        }
+        .card i {
+            font-size: 36px;
+        }
+        .card h3 {
+            font-size: 18px;
+        }
+        .card p {
+            font-size: 13px;
+        }
+    }
+    </style>
+</head>
+<body>
+
+    <section class="cards-container">
+        <!-- Card 1 -->
+        <div class="card">
+            <i class="fas fa-vials"></i>
+            <h3>Testing</h3>
+            <p>Our most important priority in our services is the satisfaction of our customer. We are proud to provide quality service to our valued customers.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <i class="fas fa-headset"></i>
+            <h3>Online Support 24/7</h3>
+            <p>We are available anytime for your help. Our 24/7 support ensures you never face downtime in solar services.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <i class="fas fa-truck"></i>
+            <h3>Just in Time Delivery</h3>
+            <p>We value your time and ensure fast, secure, and on-time delivery of our solar solutions to your doorstep.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <i class="fas fa-award"></i>
+            <h3>Quality Qualified</h3>
+            <p>Our services and products are tested and certified for high quality and durability, ensuring long-lasting performance.</p>
+        </div>
+    </section>
+
+</body>
+</html>

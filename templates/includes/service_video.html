@@ -1,0 +1,112 @@
+
+{% load static %}
+
+
+<section id="service-video">
+    <div class="video-container">
+        <h2>Our Service Center Video</h2>
+        <p class="intro">
+            Get a closer look at how we deliver our trusted solar services.  
+            Watch the video below or download it for offline viewing.
+        </p>
+
+        <!-- Video Section -->
+        <div class="video-wrapper">
+            <video controls>
+                <source src="{% static 'video/Gootu_Authorized_Distributor_in_Haridwar___Gootu_Service_Centre___Gootu_Solar_Inverter(1080p).mp4' %}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- Download Button -->
+        <div class="download-btn">
+            <a href="{% static 'video/Gootu_Authorized_Distributor_in_Haridwar___Gootu_Service_Centre___Gootu_Solar_Inverter(1080p).mp4' %}" download>
+                ⬇ Download Video
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Section base */
+#service-video {
+    padding: 50px 20px;
+    background: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+/* Container */
+.video-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* Heading */
+.video-container h2 {
+    color: #72b23d;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+.video-container .intro {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* Video */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+}
+.video-wrapper video {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Download Button */
+.download-btn {
+    margin-top: 25px;
+}
+.download-btn a {
+    background: #72b23d;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+.download-btn a:hover {
+    background: #5a9b2f;
+    transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .video-container h2 {
+        font-size: 1.6rem;
+    }
+    .video-container .intro {
+        font-size: 1rem;
+    }
+    .download-btn a {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+}
+@media (min-width: 1200px) {
+    .video-container h2 {
+        font-size: 2.2rem;
+    }
+    .video-container .intro {
+        font-size: 1.2rem;
+    }
+}
+</style>
+

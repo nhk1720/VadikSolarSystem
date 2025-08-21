@@ -2,73 +2,82 @@
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
     body {
         font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
     }
 
+    /* Product Section */
     .products-section {
         text-align: center;
         padding: 20px;
         background: #f7f7f7;
+        position: relative;
     }
 
     .products-section h2 {
-    font-size: 32px;
-    font-weight: 700;
-    background: linear-gradient(to right, #4CAF50, #2e7d32);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-}
+        font-size: 32px;
+        font-weight: 700;
+        background: linear-gradient(to right, #4CAF50, #2e7d32);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
 
+    /* Buttons */
     .product-buttons {
         margin-bottom: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
     }
 
     .product-btn {
         padding: 12px 20px;
-        margin: 0 8px;
         border: none;
         background: #fff;
-        color: #4CAF50;
+        color: #72b23d;
         font-size: 16px;
         font-weight: 500;
         cursor: pointer;
         border-radius: 25px;
-        border: 2px solid #4CAF50;
+        border: 2px solid #72b23d;
         transition: all 0.3s ease;
     }
 
-    .product-btn:hover {
-        background: #4CAF50;
+    .product-btn:hover,
+    .product-btn.active {
+        background: #72b23d;
         color: white;
         transform: scale(1.05);
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .product-btn.active {
-        background: #4CAF50;
-        color: white;
-    }
-
-    .product-images {
+    /* Product Slider Container */
+    .product-slider {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 25px;
-        margin-top: 10px;
-        animation: fadeIn 0.5s ease-in-out;
+        gap: 20px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 10px;
     }
 
+    .product-slider::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Product Card */
     .product-card {
-        text-align: center;
-        width: 220px;
+        flex: 0 0 250px; /* fixed width for equal size */
+        max-width: 250px;
         background: white;
         border-radius: 10px;
         padding: 15px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        text-align: center;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -79,6 +88,8 @@
 
     .product-card img {
         width: 100%;
+        height: 160px; /* ✅ fixed height for equal size */
+        object-fit: contain;
         border-radius: 8px;
         transition: transform 0.3s ease;
     }
@@ -87,26 +98,66 @@
         transform: scale(1.05);
     }
 
+    /* Description */
     .product-desc {
-    margin-top: 12px;
-    font-size: 14px;
-    font-weight: 700;
-    color: white;
-    background: #4CAF50;
-    padding: 6px 10px;
-    border-radius: 8px;
-    display: inline-block;
-    transition: 0.3s ease;
-}
+        margin-top: 12px;
+        font-size: 14px;
+        font-weight: 700;
+        color: white;
+        background: #72b23d;
+        padding: 6px 10px;
+        border-radius: 8px;
+        display: inline-block;
+        transition: 0.3s ease;
+    }
 
     .product-desc:hover {
-        background: #2e7d32;
+        background: #4CAF50;
         transform: scale(1.05);
     }
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+    /* Arrows */
+    .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #72b23d;
+        color: white;
+        border: none;
+        padding: 10px 14px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        z-index: 10;
+        transition: background 0.3s ease;
+    }
+
+    .arrow:hover {
+        background: #4CAF50;
+    }
+
+    .arrow.left { left: 10px; }
+    .arrow.right { right: 10px; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .product-card {
+            flex: 0 0 200px;
+            max-width: 200px;
+        }
+        .products-section h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .product-card {
+            flex: 0 0 160px;
+            max-width: 160px;
+        }
+        .products-section h2 {
+            font-size: 20px;
+        }
     }
 </style>
 
@@ -121,8 +172,12 @@
         <button class="product-btn" onclick="showProduct(4, event)">All-in-one Energy Storage System</button>
     </div>
 
-    <!-- Images -->
-    <div class="product-images" id="productImages"></div>
+    <!-- Arrows -->
+    <button class="arrow left" onclick="scrollSlider(-1)">&#10094;</button>
+    <button class="arrow right" onclick="scrollSlider(1)">&#10095;</button>
+
+    <!-- Slider -->
+    <div class="product-slider" id="productSlider"></div>
 </section>
 
 <script>
@@ -133,18 +188,18 @@
             { img: "{% static 'images/Hybrid_solar1/img3.png' %}", desc: "GOOTU 3.6KW Hybrid Dual Output Inverter" },
             { img: "{% static 'images/Hybrid_solar1/img4.png' %}", desc: "Single Phase 6Kw 48V Hybrid Solar Inverter" },
             { img: "{% static 'images/Hybrid_solar1/img3.png' %}", desc: "GOOTU 6KW 48V MPPT Parallelable Hybrid Solar Inverter" }
+            
         ],
         2: [
-            { img: "{% static 'images/Off grid solor inverter/img1.png' %}", desc: "1.2Kva Off-Grid Solar Power Inverter" },
-            { img: "{% static 'images/Off grid solor inverter/img2.png' %}", desc: "12V 1200W Off Grid Solar Inverter" },
-            { img: "{% static 'images/Off grid solor inverter/img3.png' %}", desc: "48V 6VA Inverter With Built-IN Wifi" },
-            { img: "{% static 'images/Off grid solor inverter/img4.png' %}", desc: "GOOTU 12V1.6KW Off Grid Inverter" },
-            { img: "{% static 'images/Off grid solor inverter/img5.png' %}", desc: "24V 3200W Off Grid Solar Inverter" }
+            { img: "{% static 'images/Off_grid_solor_inverter/img1.png' %}", desc: "1.2Kva Off-Grid Solar Power Inverter" },
+            { img: "{% static 'images/Off_grid_solor_inverter/img2.png' %}", desc: "12V 1200W Off Grid Solar Inverter" },
+            { img: "{% static 'images/Off_grid_solor_inverter/img3.png' %}", desc: "48V 6VA Inverter With Built-IN Wifi" },
+            { img: "{% static 'images/Off_grid_solor_inverter/img4.png' %}", desc: "GOOTU 12V1.6KW Off Grid Inverter" },
+            { img: "{% static 'images/Off_grid_solor_inverter/img5.png' %}", desc: "24V 3200W Off Grid Solar Inverter" }
         ],
         3: [
             { img: "{% static 'images/well_mounted/img1 (1).png' %}", desc: "24V 100AH Power Well Battery" },
-            { img: "{% static 'images/well_mounted/img2.png'%}", desc: "24V 100AH Power Well Battery" },
-            // { img: "images/aboutus_img.png", desc: "This is Product 3 - Item C" }
+            { img: "{% static 'images/well_mounted/img2.png'%}", desc: "24V 100AH Power Well Battery" }
         ],
         4: [
             { img: "{% static 'images/all_in_one/img1 (1).png'%}", desc: "6.2 KW Inverter Stackcable Energy System" },
@@ -157,8 +212,8 @@
         document.querySelectorAll(".product-btn").forEach(btn => btn.classList.remove("active"));
         e.target.classList.add("active");
 
-        const imagesContainer = document.getElementById("productImages");
-        imagesContainer.innerHTML = products[productNumber]
+        const slider = document.getElementById("productSlider");
+        slider.innerHTML = products[productNumber]
             .map(item => `
                 <div class="product-card">
                     <img src="${item.img}" alt="Product Image">
@@ -167,5 +222,12 @@
             `).join("");
     }
 
+    function scrollSlider(direction) {
+        const slider = document.getElementById("productSlider");
+        const scrollAmount = 270; // card width + gap
+        slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+
+    // Load first product set
     showProduct(1, { target: document.querySelector(".product-btn") });
 </script>
