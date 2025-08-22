@@ -14,5 +14,6 @@ def product_view(request):
 
 def video_view(request):
     return render(request, 'main/videos.html')
+
 def address_view(request):
     return render(request, 'main/address.html')
