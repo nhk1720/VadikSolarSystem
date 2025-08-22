@@ -1,0 +1,153 @@
+{% load static %}
+
+<section id="contact-address">
+    <div class="address-container">
+        <!-- Left: Map/Image -->
+        <div class="map-side">
+            <img src="{% static 'images/map.png' %}" alt="Vadik Solar System Location">
+        </div>
+
+        <!-- Right: Address -->
+        <div class="address-side">
+            <h2>Our Address</h2>
+            <p>
+                <strong>Vadik Solar System</strong><br>
+                Near Shivalik Nagar, Industrial Area<br>
+                Haridwar, Uttarakhand - 249403<br>
+                India
+            </p>
+            <p>
+                📞 <a href="tel:+911234567890">+91 12345 67890</a><br>
+                ✉ <a href="mailto:info@vadiksolarsystem.com">info@vadiksolarsystem.com</a>
+            </p>
+            <p class="note">We welcome you to visit us for consultation and service support.</p>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Section with gradient background */
+#contact-address {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #e6f5e9, #d9f7ff);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Flex container */
+.address-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.address-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+/* Map/Image */
+.map-side {
+    flex: 1;
+    min-width: 300px;
+}
+.map-side img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.map-side img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Address text */
+.address-side {
+    flex: 1;
+    min-width: 280px;
+    padding: 10px 15px;
+}
+.address-side h2 {
+    color: #1e824c;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    position: relative;
+}
+.address-side h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #1e824c;
+    margin-top: 8px;
+    border-radius: 2px;
+}
+.address-side p {
+    color: #333;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+.address-side a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+}
+.address-side a:hover {
+    color: #0056b3;
+}
+.address-side a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #007bff;
+    left: 0;
+    bottom: -3px;
+    transition: width 0.3s ease;
+}
+.address-side a:hover::after {
+    width: 100%;
+}
+.address-side .note {
+    font-size: 0.95rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 15px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .address-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    .address-side h2 {
+        font-size: 1.6rem;
+    }
+    .address-side p {
+        font-size: 1rem;
+    }
+}
+@media (min-width: 1200px) {
+    .address-side h2 {
+        font-size: 2.2rem;
+    }
+    .address-side p {
+        font-size: 1.15rem;
+    }
+}
+</style>
+ 
