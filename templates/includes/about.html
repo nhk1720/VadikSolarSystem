@@ -1,0 +1,171 @@
+
+{% load static %}
+
+
+<section id="about-us">
+    <div class="about-container">
+        <!-- Left: Image -->
+        <div class="about-image">
+            <img src="{% static 'images/aboutus_img.png' %}" alt="About Vadik Solar System">
+        </div>
+        <!-- Right: Text -->
+        <div class="about-text">
+            <h2>About Us</h2>
+            <p>
+                <strong>Vadik Solar System</strong> is a trusted provider of high-quality solar inverters, offering both sales and professional inverter services. 
+                We specialize in delivering reliable, energy-efficient solutions to meet the needs of homes and businesses, ensuring 
+                optimal performance and long-term savings.
+            </p>
+            <p>
+                Our commitment to customer satisfaction, combined with our technical expertise, makes us a preferred choice for 
+                solar power solutions. We provide end-to-end services — from consultation and installation to maintenance and support.
+            </p>
+            <p class="highlight">
+                <strong>Vadik Solar System (Haridwar):</strong> We are proud to be an 
+                <span class="green">authorized distributor</span> for 
+                <a href="https://www.gootuenergy.com/" target="_blank">GOOTU Energy</a>, 
+                a globally recognized leader in solar energy technology.
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Section base */
+#about-us {
+    padding: 70px 20px;
+    background: linear-gradient(135deg, #f9fff6, #ffffff);
+    font-family: 'Poppins', sans-serif;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Flex container */
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: auto;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+/* Image */
+.about-image {
+    flex: 1;
+    min-width: 320px;
+    display: flex;
+    justify-content: center;
+}
+.about-image img {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.about-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+/* Text */
+.about-text {
+    flex: 1.2;
+    min-width: 320px;
+}
+.about-text h2 {
+    background: linear-gradient(90deg, #72b23d, #25D366);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.6rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+}
+.about-text h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #72b23d;
+    margin-top: 10px;
+    border-radius: 3px;
+    transition: width 0.4s ease;
+}
+.about-text h2:hover::after {
+    width: 120px;
+}
+.about-text p {
+    color: #333;
+    font-size: 1.15rem;
+    line-height: 1.9;
+    margin-bottom: 22px;
+    transition: transform 0.3s ease;
+}
+.about-text p:hover {
+    transform: translateX(5px);
+}
+.about-text .highlight {
+    background: #f6fff8;
+    padding: 18px;
+    border-left: 5px solid #72b23d;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    color: #222;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.about-text .green {
+    color: #25D366;
+    font-weight: 700;
+}
+.about-text a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.about-text a:hover {
+    color: #0056b3;
+    text-shadow: 0 0 8px rgba(0, 91, 187, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-text h2::after {
+        margin: 12px auto;
+    }
+}
+@media (max-width: 768px) {
+    #about-us {
+        padding: 45px 15px;
+    }
+    .about-text h2 {
+        font-size: 2rem;
+    }
+    .about-text p {
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+}
+@media (min-width: 1400px) {
+    .about-text h2 {
+        font-size: 3rem;
+    }
+    .about-text p {
+        font-size: 1.25rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+

@@ -17,3 +17,6 @@ def video_view(request):
 
 def address_view(request):
     return render(request, 'main/address.html')
+
+# def contact_view(request):
+#     return render(request, 'main/contact.html')
