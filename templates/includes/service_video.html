@@ -2,9 +2,9 @@
 {% load static %}
 
 
-<section id="service-video">
+<section id="service-video" style="animation: fadeIn 1.2s ease-in-out;">
     <div class="video-container">
-        <h2>Our Service Center Video</h2>
+        <h2 class="service-heading">Our Service Center Video</h2>
         <p class="intro">
             Get a closer look at how we deliver our trusted solar services.  
             Watch the video below or download it for offline viewing.
@@ -12,15 +12,15 @@
 
         <!-- Video Section -->
         <div class="video-wrapper">
-            <video controls>
-                <source src="{% static 'video/Gootu_Authorized_Distributor_in_Haridwar___Gootu_Service_Centre___Gootu_Solar_Inverter(1080p).mp4' %}" type="video/mp4">
+            <video controls muted style="width:100%;max-width:700px;max-height:380px;object-fit:cover;border-radius:12px;" onvolumechange="this.muted=true;">
+                <source src="{% static 'video/service_video.mp4' %}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
 
         <!-- Download Button -->
         <div class="download-btn">
-            <a href="{% static 'video/Gootu_Authorized_Distributor_in_Haridwar___Gootu_Service_Centre___Gootu_Solar_Inverter(1080p).mp4' %}" download>
+            <a href="{% static 'video/service_video.mp4' %}" download>
                 ⬇ Download Video
             </a>
         </div>
@@ -28,6 +28,10 @@
 </section>
 
 <style>
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 /* Section base */
 #service-video {
     padding: 50px 20px;
@@ -43,10 +47,28 @@
 }
 
 /* Heading */
-.video-container h2 {
+.video-container h2.service-heading {
     color: #72b23d;
     font-size: 2rem;
     margin-bottom: 15px;
+    background: linear-gradient(90deg, #72b23d, #25D366);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    display: inline-block;
+}
+.video-container h2.service-heading::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #72b23d;
+    margin-top: 10px;
+    border-radius: 3px;
+    transition: width 0.4s ease;
+}
+.video-container h2.service-heading:hover::after {
+    width: 120px;
 }
 .video-container .intro {
     color: #555;
@@ -64,8 +86,11 @@
 }
 .video-wrapper video {
     width: 100%;
+    max-width: 700px;
+    max-height: 380px;
     border-radius: 12px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    object-fit: cover;
 }
 
 /* Download Button */
@@ -98,6 +123,10 @@
     .download-btn a {
         padding: 10px 20px;
         font-size: 0.95rem;
+    }
+    .video-wrapper video {
+        max-width: 100vw;
+        max-height: 220px;
     }
 }
 @media (min-width: 1200px) {

@@ -4,9 +4,14 @@
 
 <section id="about-us">
     <div class="about-container">
-        <!-- Left: Image -->
-        <div class="about-image">
-            <img src="{% static 'images/aboutus_img.png' %}" alt="About Vadik Solar System">
+        <!-- Left: Two Images -->
+        <div class="about-image-group">
+            <div class="about-img-wrap">
+                <img src="{% static 'images/slide44.png' %}" alt="Well Mounted 1">
+            </div>
+            <div class="about-img-wrap">
+                <img src="{% static 'images/aboutus_img.png' %}" alt="Well Mounted 2">
+            </div>
         </div>
         <!-- Right: Text -->
         <div class="about-text">
@@ -50,23 +55,45 @@
     flex-wrap: wrap;
 }
 
-/* Image */
-.about-image {
+/* Two-Image Group */
+.about-image-group {
     flex: 1;
-    min-width: 320px;
+    min-width: 220px;
     display: flex;
+    flex-direction: column;
+    gap: 22px;
+    align-items: center;
     justify-content: center;
-}
-.about-image img {
     width: 100%;
-    max-width: 480px;
-    border-radius: 18px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
-.about-image img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+.about-img-wrap {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 4/3;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    background: #f6fff8;
+    transition: box-shadow 0.4s, transform 0.4s;
+    position: relative;
+    margin: 0 auto;
+}
+.about-img-wrap img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s;
+    border-radius: 18px;
+}
+.about-img-wrap:hover {
+    box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+    transform: scale(1.04) rotate(-1deg);
+}
+.about-img-wrap:hover img {
+    transform: scale(1.06);
 }
 
 /* Text */
@@ -137,8 +164,39 @@
         flex-direction: column;
         text-align: center;
     }
+    .about-image-group {
+        flex-direction: row;
+        gap: 12px;
+        margin-bottom: 18px;
+        width: 100%;
+        justify-content: center;
+    }
+    .about-img-wrap {
+        width: 44vw;
+        min-width: 120px;
+        max-width: 220px;
+        aspect-ratio: 4/3;
+    }
     .about-text h2::after {
         margin: 12px auto;
+    }
+}
+@media (max-width: 600px) {
+    .about-image-group {
+        flex-direction: column;
+        gap: 14px;
+        width: 100%;
+        padding-left: 4vw;
+        padding-right: 4vw;
+        box-sizing: border-box;
+    }
+    .about-img-wrap {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        aspect-ratio: 4/3;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 @media (max-width: 768px) {

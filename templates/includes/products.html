@@ -79,6 +79,21 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         text-align: center;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+        animation: fadeInUpProduct 0.7s cubic-bezier(.23,1.01,.32,1) forwards;
+        animation-delay: var(--fade-delay, 0ms);
+    }
+
+    @keyframes fadeInUpProduct {
+        0% {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+        }
+        100% {
+            opacity: 1;
+            transform: none;
+        }
     }
 
     .product-card:hover {
@@ -161,8 +176,38 @@
     }
 </style>
 
+<style>
+/* Our Products heading underline effect (same as About Us) */
+.products-section h2.products-heading {
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #72b23d, #25D366);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+.products-section h2.products-heading::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #72b23d;
+    margin-top: 10px;
+    border-radius: 3px;
+    transition: width 0.4s ease;
+}
+.products-section h2.products-heading:hover::after {
+    width: 120px;
+}
+</style>
+
 <section class="products-section">
-    <h2>Our Products</h2>
+    <h2 class="products-heading">Our Products</h2>
+
 
     <!-- Buttons -->
     <div class="product-buttons">
@@ -214,8 +259,8 @@
 
         const slider = document.getElementById("productSlider");
         slider.innerHTML = products[productNumber]
-            .map(item => `
-                <div class="product-card">
+            .map((item, idx) => `
+                <div class="product-card" style="--fade-delay:${idx * 80}ms">
                     <img src="${item.img}" alt="Product Image">
                     <div class="product-desc">${item.desc}</div>
                 </div>
@@ -227,6 +272,19 @@
         const scrollAmount = 270; // card width + gap
         slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
     }
+
+    // Fade-in effect on scroll to product section
+    function fadeInOnScroll() {
+        const section = document.querySelector('.products-section');
+        if (!section) return;
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            section.classList.add('visible');
+            window.removeEventListener('scroll', fadeInOnScroll);
+        }
+    }
+    window.addEventListener('scroll', fadeInOnScroll);
+    fadeInOnScroll();
 
     // Load first product set
     showProduct(1, { target: document.querySelector(".product-btn") });

@@ -90,15 +90,24 @@
     font-size: 2rem;
     margin-bottom: 20px;
     position: relative;
+    background: linear-gradient(90deg, #72b23d, #25D366);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
 }
 .address-side h2::after {
     content: "";
     display: block;
-    width: 60px;
+    width: 80px;
     height: 4px;
     background: #72b23d;
-    margin-top: 8px;
-    border-radius: 2px;
+    margin-top: 10px;
+    border-radius: 3px;
+    transition: width 0.4s ease;
+}
+.address-side h2:hover::after {
+    width: 120px;
 }
 .address-side p {
     color: #333;
